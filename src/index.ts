@@ -11,8 +11,10 @@ import {
   withMapper,
 } from 'karabiner.ts'
 import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
-import { homeRowMods } from './homerow_mods'
+import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
 import { capslockToEscAndHyper } from './caps lock to hyper'
+import { vimDvorakNavigation } from './vim_navigation'
+import { symbolLayer } from './symbol layer'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
@@ -20,20 +22,14 @@ import { capslockToEscAndHyper } from './caps lock to hyper'
 writeToProfileWithLocalOutput(
   'karabiner-ts',
   [
+    ...symbolLayer,
     ...capslockToEscAndHyper,
-    ...homeRowMods,
+    ...vimDvorakNavigation,
+    ...homeRowModsCtrlOptCommandShift,
     // It is not required, but recommended to put symbol alias to layers,
     // to make it easier to write '←' instead of 'left_arrow'.
     // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
-    layer('/', 'symbol-mode').manipulators([
-      //     / + [ 1    2    3    4    5 ] =>
-      withMapper(['⌘', '⌥', '⌃', '⇧', '⇪'])((k, i) =>
-        map((i + 1) as NumberKeyValue).toPaste(k),
-      ),
-      withMapper(['←', '→', '↑', '↓', '␣', '⏎', '⇥', '⎋', '⌫', '⌦', '⇪'])((k) =>
-        map(k).toPaste(k),
-      ),
-    ]),
+
 
     // If you type fast, use simlayer instead, see https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md#simlayers
     simlayer('z', 'emoji-mode').manipulators([
@@ -120,7 +116,7 @@ writeToProfileWithLocalOutput(
     'basic.to_if_alone_timeout_milliseconds': 120,
     'basic.to_if_held_down_threshold_milliseconds': 120,
     'basic.to_delayed_action_delay_milliseconds': 200,
-    'basic.simultaneous_threshold_milliseconds': 50,
+    'basic.simultaneous_threshold_milliseconds': 60,
     'mouse_motion_to_scroll.speed': 100,
   },
   './build/output.json',

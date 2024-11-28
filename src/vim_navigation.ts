@@ -1,8 +1,7 @@
-import { layer, map } from 'karabiner.ts'
+import { layer, map, toKey, toNone } from 'karabiner.ts'
 
-export const vimDvorakNavigation = [
-  // Layer for 'd' (DVORAK h/l -> left/right)
-  layer('d', 'vim-navigation-mode').manipulators([
+export const vimNavigation = [
+  layer(['d'], 'vim-navigation-mode').manipulators([
     map('h').to('left_arrow'),
     map('j').to('down_arrow'),
     map('k').to('up_arrow'),

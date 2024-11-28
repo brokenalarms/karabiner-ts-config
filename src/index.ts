@@ -13,8 +13,11 @@ import {
 import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
 import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
 import { capslockToEscAndHyper } from './caps lock to hyper'
-import { vimDvorakNavigation } from './vim_navigation'
+import { vimNavigation } from './vim_navigation'
 import { symbolLayer } from './symbol layer'
+import { fastKeys } from './fast_keys'
+import { windowLayer } from './window_layer'
+import { vsCode } from './vs-code'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
@@ -22,14 +25,17 @@ import { symbolLayer } from './symbol layer'
 writeToProfileWithLocalOutput(
   'karabiner-ts',
   [
+    ...fastKeys,
+    ...windowLayer,
     ...symbolLayer,
     ...capslockToEscAndHyper,
-    ...vimDvorakNavigation,
+    ...vimNavigation
+    ,
     ...homeRowModsCtrlOptCommandShift,
+    ...vsCode,
     // It is not required, but recommended to put symbol alias to layers,
     // to make it easier to write '←' instead of 'left_arrow'.
     // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
-
 
     // If you type fast, use simlayer instead, see https://github.com/yqrashawn/GokuRakuJoudo/blob/master/tutorial.md#simlayers
     simlayer('z', 'emoji-mode').manipulators([
@@ -115,28 +121,14 @@ writeToProfileWithLocalOutput(
   {
     'basic.to_if_alone_timeout_milliseconds': 120,
     'basic.to_if_held_down_threshold_milliseconds': 120,
-    'basic.to_delayed_action_delay_milliseconds': 200,
+    'basic.to_delayed_action_delay_milliseconds': 300,
     'basic.simultaneous_threshold_milliseconds': 60,
     'mouse_motion_to_scroll.speed': 100,
+    // karabiner.ts only parameters
+    //   for simlayer()
+    //'simlayer.threshold_milliseconds': 200
+    //   for mapDoubleTap()
+    //'double_tap.delay_milliseconds': 200,
   },
-  './build/output.json',
+  './dist/output.json',
 )
-
-/*
-Karabiner-Elements profile parameters can also be set by the 3rd parameter
-of writeToProfile('profileName', [ rules ], { params }). The default values are:
-
-// Karabiner-Elements parameters
-'basic.to_if_alone_timeout_milliseconds': 1000,
-'basic.to_if_held_down_threshold_milliseconds': 500,
-'basic.to_delayed_action_delay_milliseconds': 500,
-'basic.simultaneous_threshold_milliseconds': 50,
-'mouse_motion_to_scroll.speed': 100,
-
-// karabiner.ts only parameters
-//   for simlayer()
-'simlayer.threshold_milliseconds': 200
-//   for mapDoubleTap()
-'double_tap.delay_milliseconds': 200,
-
- */

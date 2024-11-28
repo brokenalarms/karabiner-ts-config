@@ -1,4 +1,12 @@
-import { map, mapSimultaneous, rule, toKey, toNone } from 'karabiner.ts'
+import {
+  layer,
+  map,
+  mapSimultaneous,
+  rule,
+  simlayer,
+  toKey,
+  toNone,
+} from 'karabiner.ts'
 
 // Home row mods
 export const homeRowModsCtrlOptCommandShift = [
@@ -84,6 +92,10 @@ export const homeRowModsCtrlOptCommandShift = [
       .toIfAlone('f', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('f'))
       .toIfHeldDown('l⇧', {}, { halt: true }),
+    map('f')
+      .toIfAlone('f', {}, { halt: true })
+      .toDelayedAction(toNone(), toKey('f'))
+      .toIfHeldDown('l⇧', {}, { halt: true }),
     //
     //
     // Four - right hand
@@ -158,10 +170,14 @@ export const homeRowModsCtrlOptCommandShift = [
       .toIfAlone('o', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('o'))
       .toIfHeldDown('r⌥', {}, { halt: true }),
-    map('i')
-      .toIfAlone('i', {}, { halt: true })
-      .toDelayedAction(toNone(), toKey('i'))
-      .toIfHeldDown('r⌘', {}, { halt: true }),
+    // map('i')
+    //   .toIfAlone('i', {}, { halt: true })
+    //   .toDelayedAction(toNone(), toKey('i'))
+    //   .toIfHeldDown('r⌘', {}, { halt: true }),
+    // map('i')
+    //   .toIfAlone('i', {}, { halt: true })
+    //   .toDelayedAction(toNone(), toKey('i'))
+    //   .toIfHeldDown('r⌘', {}, { halt: true }),
     map('j')
       .toIfAlone('j', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('j'))

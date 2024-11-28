@@ -1,4 +1,4 @@
-import { layer, map } from 'karabiner.ts'
+import { layer, map, rule } from 'karabiner.ts'
 
 export const windowLayer = [
   layer('q', 'window-mode').manipulators([

@@ -79,23 +79,35 @@ export const homeRowModsCtrlOptCommandShift = [
     map('a')
       .toIfAlone('a', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('a'))
-      .toIfHeldDown('l⌃', {}, { halt: true }),
+      .toIfHeldDown('l⌃', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     map('w')
       .toIfAlone('w', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('w'))
-      .toIfHeldDown('l⌥', {}, { halt: true }),
+      .toIfHeldDown('l⌥', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     map('e')
       .toIfAlone('e', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('e'))
-      .toIfHeldDown('l⌘', {}, { halt: true }),
+      .toIfHeldDown('l⌘', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     map('f')
       .toIfAlone('f', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('f'))
-      .toIfHeldDown('l⇧', {}, { halt: true }),
-    map('f')
-      .toIfAlone('f', {}, { halt: true })
-      .toDelayedAction(toNone(), toKey('f'))
-      .toIfHeldDown('l⇧', {}, { halt: true }),
+      .toIfHeldDown('l⇧', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     //
     //
     // Four - right hand
@@ -165,22 +177,34 @@ export const homeRowModsCtrlOptCommandShift = [
     map(';')
       .toIfAlone(';', {}, { halt: true })
       .toDelayedAction(toNone(), toKey(';'))
-      .toIfHeldDown('r⌃', {}, { halt: true }),
+      .toIfHeldDown('r⌃', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     map('o')
       .toIfAlone('o', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('o'))
-      .toIfHeldDown('r⌥', {}, { halt: true }),
-    // map('i')
-    //   .toIfAlone('i', {}, { halt: true })
-    //   .toDelayedAction(toNone(), toKey('i'))
-    //   .toIfHeldDown('r⌘', {}, { halt: true }),
-    // map('i')
-    //   .toIfAlone('i', {}, { halt: true })
-    //   .toDelayedAction(toNone(), toKey('i'))
-    //   .toIfHeldDown('r⌘', {}, { halt: true }),
+      .toIfHeldDown('r⌥', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
+    map('i')
+      .toIfAlone('i', {}, { halt: true })
+      .toDelayedAction(toNone(), toKey('i'))
+      .toIfHeldDown('r⌘', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
     map('j')
       .toIfAlone('j', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('j'))
-      .toIfHeldDown('r⇧', {}, { halt: true }),
+      .toIfHeldDown('r⇧', {}, { halt: true })
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 150,
+        'basic.to_if_held_down_threshold_milliseconds': 150
+      }),
   ]),
 ]

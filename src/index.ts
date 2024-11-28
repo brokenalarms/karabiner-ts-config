@@ -12,12 +12,13 @@ import {
 } from 'karabiner.ts'
 import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
 import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
-import { capslockToEscAndHyper } from './caps lock to hyper'
+import { toHyper } from './caps lock to hyper'
 import { vimNavigation } from './vim_navigation'
 import { symbolLayer } from './symbol layer'
 import { fastKeys } from './fast_keys'
 import { windowLayer } from './window_layer'
 import { vsCode } from './vs-code'
+import { oneShots } from './one_shots'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
@@ -28,9 +29,9 @@ writeToProfileWithLocalOutput(
     ...fastKeys,
     ...windowLayer,
     ...symbolLayer,
-    ...capslockToEscAndHyper,
-    ...vimNavigation
-    ,
+    ...toHyper,
+    ...vimNavigation,
+    ...oneShots,
     ...homeRowModsCtrlOptCommandShift,
     ...vsCode,
     // It is not required, but recommended to put symbol alias to layers,
@@ -119,9 +120,9 @@ writeToProfileWithLocalOutput(
     // ]),
   ],
   {
-    'basic.to_if_alone_timeout_milliseconds': 120,
-    'basic.to_if_held_down_threshold_milliseconds': 120,
-    'basic.to_delayed_action_delay_milliseconds': 300,
+    'basic.to_if_alone_timeout_milliseconds': 150,
+    'basic.to_if_held_down_threshold_milliseconds': 150,
+    'basic.to_delayed_action_delay_milliseconds': 200,
     'basic.simultaneous_threshold_milliseconds': 60,
     'mouse_motion_to_scroll.speed': 100,
     // karabiner.ts only parameters

@@ -1,11 +1,10 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync, existsSync } from 'fs'
 import path from 'path'
 import {
   Rule,
   RuleBuilder,
   writeToProfile,
   ModificationParameters,
-  WriteTarget,
 } from 'karabiner.ts'
 
 /**
@@ -17,7 +16,7 @@ import {
  * @param outputPath  The path to the local JSON file.
  */
 export function writeToProfileWithLocalOutput(
-  writeTarget: '--dry-run' | string | WriteTarget,
+  writeTarget: '--dry-run' | string,
   rules: Array<Rule | RuleBuilder>,
   parameters: ModificationParameters | undefined,
   outputPath: string,
@@ -51,6 +50,11 @@ export function writeToLocalFile(
 
   // Resolve the output path
   const resolvedPath = path.resolve(outputPath)
+
+  // Ensure the file exists
+  if (!existsSync(resolvedPath)) {
+    writeFileSync(resolvedPath, '{}', 'utf-8') // Create an empty JSON file if it doesn't exist
+  }
 
   // Write the output to the local JSON file
   try {

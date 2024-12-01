@@ -1,39 +1,35 @@
 import {
-  ifApp,
-  ifVar,
-  layer,
   map,
-  mapDoubleTap,
-  NumberKeyValue,
-  rule,
-  simlayer,
-  withCondition,
-  withMapper,
+  simlayer
 } from 'karabiner.ts'
-import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
-import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
 import { toHyper } from './caps lock to hyper'
-import { vimNavigation } from './vim_navigation'
-import { symbolLayer } from './symbol layer'
+import { getLocation } from './constants'
 import { fastKeys } from './fast_keys'
-import { windowLayer } from './window_layer'
-import { vsCode } from './vs-code'
+import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
+import { profileConfigs } from './layout_config'
 import { oneShots } from './one_shots'
+import { symbolLayer } from './symbol layer'
+import { vimNavigation } from './vim_navigation'
+import { vsCode } from './vs-code'
+import { windowLayer } from './window_layer'
+import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
 // + Create a new profile if needed.
+profileConfigs.forEach((config) => {
+const location = getLocation(config)
 writeToProfileWithLocalOutput(
-  'karabiner-ts',
+ config.profileName,
   [
-    ...fastKeys,
-    ...windowLayer,
-    ...symbolLayer,
-    ...toHyper,
-    ...vimNavigation,
-    ...oneShots,
-    ...homeRowModsCtrlOptCommandShift,
-    ...vsCode,
+    ...fastKeys(location),
+    ...windowLayer(location),
+    ...symbolLayer(location),
+    ...toHyper(location),
+    ...vimNavigation(location),
+    ...oneShots(location),
+    ...homeRowModsCtrlOptCommandShift(location),
+    ...vsCode(location),
     // It is not required, but recommended to put symbol alias to layers,
     // to make it easier to write '←' instead of 'left_arrow'.
     // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
@@ -131,5 +127,6 @@ writeToProfileWithLocalOutput(
     //   for mapDoubleTap()
     //'double_tap.delay_milliseconds': 200,
   },
-  './dist/output.json',
+  config.outputPath
 )
+ })

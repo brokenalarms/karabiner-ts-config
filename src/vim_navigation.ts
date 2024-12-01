@@ -1,10 +1,13 @@
-import { layer, map, toKey, toNone } from 'karabiner.ts'
+import { FromAndToKeyCode, layer, LayerKeyParam, map } from 'karabiner.ts'
 
-export const vimNavigation = [
-  layer(['g'], 'vim-navigation-mode').manipulators([
-    map('h').to('left_arrow'),
-    map('j').to('down_arrow'),
-    map('k').to('up_arrow'),
-    map('l').to('right_arrow'),
+export const vimNavigation = (
+  location: Record<string, FromAndToKeyCode>,
+) => [
+  layer([location.x as LayerKeyParam], 'vim-navigation-mode').manipulators([
+    map(location.h).to('left_arrow'),
+    map(location.j).to('down_arrow'),
+    map(location.k).to('up_arrow'),
+    map(location.l).to('right_arrow'),
   ]),
 ]
+

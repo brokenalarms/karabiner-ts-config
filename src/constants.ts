@@ -1,10 +1,21 @@
-import { FromKeyCode, FromKeyParam, ToKeyCode, ToKeyParam, FromAndToKeyCode } from 'karabiner.ts'
+import { FromAndToKeyCode } from 'karabiner.ts'
+import { ProfileConfig } from './layout_config'
 
-type Layout = 'qwerty' | 'dvorak'
+// if using e.g., an external Kinesis Advantage 2 with an actual DVORAK setting that outputs keystrokes
+// in advance of reaching software, then there is no need to consider software translations, and
+// we directly substitute the resulting letter in DVORAK from typing th.WERTY at that spot.
+const hardwareTranslation = true
+
+export type Layout = 'qwerty' | 'dvorak' | 'dvorak_logical'
+export type LocationLayoutMap = Record<FromAndToKeyCode, FromAndToKeyCode>
+// Without hardware translatin,
 const layout: Layout = 'dvorak'
 
 // lower key mappings only
-const layouts: Record<Layout, Record<FromAndToKeyCode, FromAndToKeyCode>> = {
+export const layouts: Record<
+  Layout,
+  LocationLayoutMap
+> = {
   qwerty: {
     q: 'q',
     w: 'w',
@@ -135,9 +146,141 @@ const layouts: Record<Layout, Record<FromAndToKeyCode, FromAndToKeyCode>> = {
     volume_up: 'left_control',
     mute: 'left_control',
     volume_decrement: 'left_control',
-    volume_increment: 'left_control'
+    volume_increment: 'left_control',
   },
   dvorak: {
+    q: 'quote',
+    w: 'comma',
+    e: 'period',
+    r: 'p',
+    t: 'y',
+    y: 'f',
+    u: 'g',
+    i: 'c',
+    o: 'r',
+    p: 'l',
+    a: 'a',
+    s: 'o',
+    d: 'e',
+    f: 'u',
+    g: 'i',
+    h: 'd',
+    j: 'h',
+    k: 't',
+    l: 'n',
+    semicolon: 's',
+    z: 'semicolon',
+    x: 'q',
+    c: 'j',
+    v: 'k',
+    b: 'x',
+    n: 'b',
+    m: 'm',
+    comma: 'w',
+    period: 'v',
+    slash: 'z',
+    grave_accent_and_tilde: 'grave_accent_and_tilde',
+    '1': '1',
+    '2': '2',
+    '3': '3',
+    '4': '4',
+    '5': '5',
+    '6': '6',
+    '7': '7',
+    '8': '8',
+    '9': '9',
+    '0': '0',
+    hyphen: 'hyphen',
+    equal_sign: 'equal_sign',
+    open_bracket: 'hyphen',
+    close_bracket: 'equal_sign',
+    backslash: 'backslash',
+    quote: 'q',
+    left_control: 'left_control',
+    left_shift: 'left_control',
+    left_option: 'left_control',
+    left_command: 'left_control',
+    right_control: 'left_control',
+    right_shift: 'left_control',
+    right_option: 'left_control',
+    right_command: 'left_control',
+    fn: 'left_control',
+    caps_lock: 'left_control',
+    return_or_enter: 'left_control',
+    escape: 'left_control',
+    delete_or_backspace: 'left_control',
+    delete_forward: 'left_control',
+    tab: 'left_control',
+    spacebar: 'left_control',
+    non_us_pound: 'left_control',
+    non_us_backslash: 'left_control',
+    up_arrow: 'left_control',
+    down_arrow: 'left_control',
+    left_arrow: 'left_control',
+    right_arrow: 'left_control',
+    page_up: 'left_control',
+    page_down: 'left_control',
+    home: 'left_control',
+    end: 'left_control',
+    f1: 'left_control',
+    f2: 'left_control',
+    f3: 'left_control',
+    f4: 'left_control',
+    f5: 'left_control',
+    f6: 'left_control',
+    f7: 'left_control',
+    f8: 'left_control',
+    f9: 'left_control',
+    f10: 'left_control',
+    f11: 'left_control',
+    f12: 'left_control',
+    f13: 'left_control',
+    f14: 'left_control',
+    f15: 'left_control',
+    f16: 'left_control',
+    f17: 'left_control',
+    f18: 'left_control',
+    f19: 'left_control',
+    f20: 'left_control',
+    keypad_num_lock: 'left_control',
+    keypad_slash: 'left_control',
+    keypad_asterisk: 'left_control',
+    keypad_hyphen: 'left_control',
+    keypad_plus: 'left_control',
+    keypad_enter: 'left_control',
+    keypad_1: 'left_control',
+    keypad_2: 'left_control',
+    keypad_3: 'left_control',
+    keypad_4: 'left_control',
+    keypad_5: 'left_control',
+    keypad_6: 'left_control',
+    keypad_7: 'left_control',
+    keypad_8: 'left_control',
+    keypad_9: 'left_control',
+    keypad_0: 'left_control',
+    keypad_period: 'left_control',
+    keypad_equal_sign: 'left_control',
+    keypad_comma: 'left_control',
+    print_screen: 'left_control',
+    scroll_lock: 'left_control',
+    pause: 'left_control',
+    insert: 'left_control',
+    application: 'left_control',
+    help: 'left_control',
+    power: 'left_control',
+    international1: 'left_control',
+    international3: 'left_control',
+    lang1: 'left_control',
+    lang2: 'left_control',
+    japanese_eisuu: 'left_control',
+    japanese_kana: 'left_control',
+    volume_down: 'left_control',
+    volume_up: 'left_control',
+    mute: 'left_control',
+    volume_decrement: 'left_control',
+    volume_increment: 'left_control',
+  },
+  dvorak_logical: {
     q: 'x',
     w: 'comma',
     e: 'd',
@@ -267,8 +410,15 @@ const layouts: Record<Layout, Record<FromAndToKeyCode, FromAndToKeyCode>> = {
     volume_up: 'left_control',
     mute: 'left_control',
     volume_decrement: 'left_control',
-    volume_increment: 'left_control'
+    volume_increment: 'left_control',
   },
 }
 
-export const location = layouts[layout]
+// fix location on keyboard, regardless of letter that will return in that positio/**
+export const getLocation = (config: ProfileConfig): LocationLayoutMap => {
+  return config.layout === 'qwerty'
+    ? layouts['qwerty']
+    : config.hardwareTranslation
+    ? layouts[config.layout]
+    : layouts[`${config.layout}_logical` as Layout];
+};

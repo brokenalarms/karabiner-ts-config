@@ -1,21 +1,19 @@
-import { FromAndToKeyCode } from 'karabiner.ts'
+import { FromAndToKeyCode, LayerKeyParam } from 'karabiner.ts'
 import { ProfileConfig } from './layout_config'
-
-// if using e.g., an external Kinesis Advantage 2 with an actual DVORAK setting that outputs keystrokes
-// in advance of reaching software, then there is no need to consider software translations, and
-// we directly substitute the resulting letter in DVORAK from typing th.WERTY at that spot.
-const hardwareTranslation = true
 
 export type Layout = 'qwerty' | 'dvorak' | 'dvorak_logical'
 export type LocationLayoutMap = Record<FromAndToKeyCode, FromAndToKeyCode>
-// Without hardware translatin,
-const layout: Layout = 'dvorak'
+export type LocationLayerMap = Record<LayerKeyParam, LayerKeyParam>
+export interface LayerConfig {
+  letter: LocationLayoutMap
+  location: LocationLayoutMap
+  layerLocation: LocationLayerMap
+  profileName: string
+}
+
 
 // lower key mappings only
-export const layouts: Record<
-  Layout,
-  LocationLayoutMap
-> = {
+const layouts: Record<Layout, LocationLayoutMap> = {
   qwerty: {
     q: 'q',
     w: 'w',
@@ -415,10 +413,38 @@ export const layouts: Record<
 }
 
 // fix location on keyboard, regardless of letter that will return in that positio/**
-export const getLocation = (config: ProfileConfig): LocationLayoutMap => {
-  return config.layout === 'qwerty'
+const getLocation = (config: ProfileConfig): LocationLayoutMap => {
+     return config.layout === 'qwerty' || !config.hardwareTranslation
+       ? layouts['qwerty']
+       : layouts[config.layout]
+}
+
+// type a specific letter on keyboard, regardless of position
+const getLetter = (config: ProfileConfig): LocationLayoutMap => {
+  return config.layout === 'qwerty' || config.hardwareTranslation
     ? layouts['qwerty']
-    : config.hardwareTranslation
-    ? layouts[config.layout]
-    : layouts[`${config.layout}_logical` as Layout];
-};
+    : layouts[`${config.layout}_logical` as Layout]
+}
+
+const getLayer = (config: ProfileConfig): LocationLayerMap => {
+  const layoutMap = getLocation(config)
+
+  return Object.entries(layoutMap).reduce((acc, [key, value]) => {
+    try {
+      const layerKey = key as LayerKeyParam
+      const layerValue = value as LayerKeyParam
+      acc[layerKey] = layerValue
+    } catch {}
+    return acc
+  }, {} as LocationLayerMap)
+}
+
+export const getLayerConfig = (config: ProfileConfig): LayerConfig => {
+
+  return {
+    letter: getLetter(config),
+    location: getLocation(config),
+    layerLocation: getLayer(config),
+    profileName: config.profileName,
+  }
+}

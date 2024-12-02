@@ -6,10 +6,9 @@ import {
   toKey,
   toNone,
 } from 'karabiner.ts'
+import { LayerConfig } from '../config/layout_mappings'
 
-export const homeRowModsCtrlOptCommandShift = (
-  location: Record<string, FromAndToKeyCode>,
-) => [
+export const homeRowModsCtrlOptCommandShift = ({ location }: LayerConfig) => [
   rule('Home row mods - ctrl, opt, cmd, shift').manipulators([
     //
     // Four - left hand

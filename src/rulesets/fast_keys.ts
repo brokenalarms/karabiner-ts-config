@@ -1,16 +1,8 @@
-import {
-  simlayer,
-  map,
-  toKey,
-  toNone,
-  LayerKeyParam,
-  FromAndToKeyCode,
-} from 'karabiner.ts'
+import { LayerKeyParam, map, simlayer } from 'karabiner.ts'
+import { LayerConfig } from '../config/layout_mappings'
 
-export const fastKeys = (
-  location: Record<string, FromAndToKeyCode>,
-) => [
-  simlayer(location.d as LayerKeyParam, 'fast-keys', 200).manipulators([
+export const fastKeys = ({ layerLocation, location }: LayerConfig) => [
+  simlayer(layerLocation.d, 'fast-keys', 200).manipulators([
     map(location.y).to('⇥'),
     map(location.u).to('⏎'),
     map(location.i).to('⌦'),

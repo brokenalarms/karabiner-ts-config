@@ -1,17 +1,15 @@
-import { map, FromAndToKeyCode, toNone, rule, toKey } from 'karabiner.ts'
+import { map, rule, toKey, toNone } from 'karabiner.ts'
+import { LayerConfig } from '../config/layout_mappings'
 
-export const toHyper = (
-  location: Record<string, FromAndToKeyCode>
-) => [
-  rule('Caps + Quote -> Hyper').manipulators([
-    map('⇪')
+export const toHyper = (_: LayerConfig) => [
+  rule('Caps and Hyper').manipulators([
+    map('caps_lock')
       .toIfAlone('escape', {}, { halt: true })
       .toDelayedAction(toNone(), toKey('escape'))
-      .toIfHeldDown('l⇧', 'l⌘⌥⌃', { halt: true }),
-  ]),
-  rule('rcmd -> Hyper').manipulators([
-    map('r⌘')
-      .toIfAlone('r⌘', {}, { halt: true })
+      .toIfHeldDown('l⌘', 'l⌥⌃⇧', { halt: true }),
+    map('escape')
+      .toIfAlone('escape', {}, { halt: true })
+      .toDelayedAction(toNone(), toKey('escape'))
       .toIfHeldDown('l⌘', 'l⌥⌃⇧', { halt: true }),
   ]),
 ]

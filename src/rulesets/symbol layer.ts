@@ -6,11 +6,10 @@ import {
   NumberKeyValue,
   withMapper,
 } from 'karabiner.ts'
+import { LayerConfig } from '../config/layout_mappings'
 
-export const symbolLayer = (
-  location: Record<string, FromAndToKeyCode>,
-) => [
-  layer(location.slash as LayerKeyParam, 'symbol-mode').manipulators([
+export const symbolLayer = ({ layerLocation }: LayerConfig) => [
+  layer(layerLocation.slash, 'symbol-mode').manipulators([
     //     / + [ 1    2    3    4,   5] =>
     withMapper(['⇧', '⌃', '⌥', '⌘', '⏎', '⌦'])((k, i) =>
       map((i + 1) as NumberKeyValue).toPaste(k),

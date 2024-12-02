@@ -296,7 +296,7 @@ export const layouts: Record<
     d: 'h',
     f: 'y',
     g: 'u',
-    h: 'h',
+    h: 'j',
     j: 'c',
     k: 'v',
     l: 'p',

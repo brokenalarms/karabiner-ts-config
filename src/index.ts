@@ -2,17 +2,17 @@ import {
   map,
   simlayer
 } from 'karabiner.ts'
-import { toHyper } from './caps lock to hyper'
-import { getLocation } from './constants'
-import { fastKeys } from './fast_keys'
-import { homeRowModsCtrlOptCommandShift } from './homerow_mods_ctrl_opt_command_shift'
-import { profileConfigs } from './layout_config'
-import { oneShots } from './one_shots'
-import { symbolLayer } from './symbol layer'
-import { vimNavigation } from './vim_navigation'
-import { vsCode } from './vs-code'
-import { windowLayer } from './window_layer'
-import { writeToProfileWithLocalOutput } from './writeToProfileWithLocalOutput'
+import { toHyper } from './rulesets/caps lock to hyper'
+import { getLocation } from './config/constants'
+import { fastKeys } from './rulesets/fast_keys'
+import { homeRowModsCtrlOptCommandShift } from './rulesets/homerow_mods_ctrl_opt_command_shift'
+import { profileConfigs } from './config/layout_config'
+import { oneShots } from './rulesets/one_shots'
+import { symbolLayer } from './rulesets/symbol layer'
+import { vimNavigation } from './rulesets/vim_navigation'
+import { vsCode } from './rulesets/vs-code'
+import { windowLayer } from './rulesets/window_layer'
+import { writeToProfileWithLocalOutput } from './utils/writeToProfileWithLocalOutput'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)

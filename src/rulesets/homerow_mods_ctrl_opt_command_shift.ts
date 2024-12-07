@@ -5,11 +5,12 @@ import {
   FromAndToKeyCode,
   toKey,
   toNone,
+  ifDevice,
 } from 'karabiner.ts'
 import { LayerConfig } from '../config/layout_mappings'
 
 export const homeRowModsCtrlOptCommandShift = ({ location }: LayerConfig) => [
-  rule('Home row mods - ctrl, opt, cmd, shift').manipulators([
+  rule('Home row mods - ctrl, opt, cmd, shift', ifDevice([{vendor_id: 5824, product_id: 10203 }]).unless()).manipulators([
     //
     // Four - left hand
     mapSimultaneous([

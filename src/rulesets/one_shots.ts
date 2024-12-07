@@ -13,7 +13,7 @@ export const oneShots = ({ letter }: LayerConfig) => [
   rule('One shots').manipulators([
     // Screenshot
     map(4)
-      .toIfAlone(4)
+      .toIfAlone(4, {}, {halt: true})
       .toIfHeldDown(4, ['l⌘⌃⇧'], { halt: true, repeat: false })
       .toDelayedAction(toNone(), toKey(4))
       .parameters({

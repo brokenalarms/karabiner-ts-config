@@ -1,0 +1,3579 @@
+{
+  "rules": [
+    {
+      "description": "Simlayer - fast-keys",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "tab"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "y"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "u"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "i"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "o"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "open_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "h"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "close_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "j"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "open_bracket"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "k"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "close_bracket"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "l"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "9",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "n"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "0",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "m"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Layer - window-mode",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "q"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "window-mode",
+              "value": 1
+            },
+            {
+              "type": "variable_unless",
+              "name": "__layer",
+              "value": 1
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "q"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Layer - symbol-mode",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "slash"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "symbol-mode",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "symbol-mode",
+              "value": 1
+            },
+            {
+              "type": "variable_unless",
+              "name": "__layer",
+              "value": 1
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "slash"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "symbol-mode",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇧\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌃\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌥\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌘\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⏎\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌦\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"←\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"→\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "up_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"↑\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "down_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"↓\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"␣\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⏎\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇥\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "escape"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⎋\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌫\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_forward"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌦\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇪\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "symbol-mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Caps and Hyper",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "escape"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "escape"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_command",
+              "modifiers": [
+                "left_option",
+                "left_control",
+                "left_shift"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "escape"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "escape"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "escape"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_command",
+              "modifiers": [
+                "left_option",
+                "left_control",
+                "left_shift"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Layer - vim-navigation-mode (Final Cut Pro)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (Final Cut Pro)",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "variable_unless",
+              "name": "__layer",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (Final Cut Pro)",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "key_code": "j"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "k"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "l"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i"
+          },
+          "to": [
+            {
+              "key_code": "i"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o"
+          },
+          "to": [
+            {
+              "key_code": "o"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Layer - vim-navigation-mode (other apps)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (other apps)",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "vim-navigation-mode (other apps)",
+              "value": 1
+            },
+            {
+              "type": "variable_unless",
+              "name": "__layer",
+              "value": 1
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "x"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (other apps)",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (other apps)",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (other apps)",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (other apps)",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (other apps)",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "One shots",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "4"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "repeat": false,
+              "key_code": "4",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_shift"
+              ]
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "4"
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 300,
+            "basic.to_if_held_down_threshold_milliseconds": 300
+          }
+        }
+      ]
+    },
+    {
+      "description": "Home row mods - ctrl, opt, cmd, shift",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "f"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_option",
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "e"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "f"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_option",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "f"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "f"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "left_option",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "w"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "a"
+            },
+            {
+              "key_code": "w"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "a"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "w"
+            },
+            {
+              "key_code": "a"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_option",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "e"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "a"
+            },
+            {
+              "key_code": "e"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "a"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "a"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_command",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "a"
+              },
+              {
+                "key_code": "f"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "a"
+            },
+            {
+              "key_code": "f"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "f"
+              },
+              {
+                "key_code": "a"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "f"
+            },
+            {
+              "key_code": "a"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "e"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "w"
+            },
+            {
+              "key_code": "e"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_option",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "w"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "w"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_command",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "w"
+              },
+              {
+                "key_code": "f"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "w"
+            },
+            {
+              "key_code": "f"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_option",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "f"
+              },
+              {
+                "key_code": "w"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "f"
+            },
+            {
+              "key_code": "w"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "e"
+              },
+              {
+                "key_code": "f"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "f"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_command",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "f"
+              },
+              {
+                "key_code": "e"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "f"
+            },
+            {
+              "key_code": "e"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "a"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "a"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "a"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_control"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "w"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "w"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_option"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "e"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "e"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_command"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "f"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "f"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_shift"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "j"
+              },
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "semicolon"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "right_shift",
+              "modifiers": [
+                "right_command",
+                "right_option",
+                "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "i"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_option",
+                "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "j"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_option",
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "j"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_command",
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "j"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "key_code": "right_option",
+              "modifiers": [
+                "right_command",
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "o"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "semicolon"
+            },
+            {
+              "key_code": "o"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "semicolon"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_option",
+              "modifiers": [
+                "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "i"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "semicolon"
+            },
+            {
+              "key_code": "i"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "semicolon"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "i"
+            },
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_command",
+              "modifiers": [
+                "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "semicolon"
+              },
+              {
+                "key_code": "j"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "semicolon"
+            },
+            {
+              "key_code": "j"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_control",
+              "modifiers": [
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "j"
+              },
+              {
+                "key_code": "semicolon"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "j"
+            },
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_shift",
+              "modifiers": [
+                "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "i"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "i"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_option",
+              "modifiers": [
+                "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "o"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "i"
+            },
+            {
+              "key_code": "o"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_command",
+              "modifiers": [
+                "right_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "o"
+              },
+              {
+                "key_code": "j"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "j"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_option",
+              "modifiers": [
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "j"
+              },
+              {
+                "key_code": "o"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "j"
+            },
+            {
+              "key_code": "o"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_shift",
+              "modifiers": [
+                "right_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "i"
+              },
+              {
+                "key_code": "j"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "i"
+            },
+            {
+              "key_code": "j"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_command",
+              "modifiers": [
+                "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "j"
+              },
+              {
+                "key_code": "i"
+              }
+            ],
+            "simultaneous_options": {
+              "key_down_order": "strict"
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "j"
+            },
+            {
+              "key_code": "i"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "right_shift",
+              "modifiers": [
+                "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "semicolon"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "semicolon"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "right_control"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "o"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "o"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "right_option"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "i"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "i"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "right_command"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "j"
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "j"
+              }
+            ]
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "right_shift"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150,
+            "basic.to_if_held_down_threshold_milliseconds": 150
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Visual Studio Code",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_command"
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_command"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 80
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "p",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "Code"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_option"
+          },
+          "to_if_held_down": [
+            {
+              "halt": true,
+              "key_code": "left_option"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 80
+          },
+          "to_if_alone": [
+            {
+              "halt": true,
+              "key_code": "p",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "Code"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Simlayer - emoji-mode",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🔀\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "emoji-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "emoji-mode",
+                "value": 1
+              }
+            },
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🔀\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "z"
+              },
+              {
+                "key_code": "m"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "emoji-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "parameters": {
+    "basic.to_if_alone_timeout_milliseconds": 150,
+    "basic.to_if_held_down_threshold_milliseconds": 150,
+    "basic.to_delayed_action_delay_milliseconds": 200,
+    "basic.simultaneous_threshold_milliseconds": 60,
+    "mouse_motion_to_scroll.speed": 100
+  }
+}

@@ -6,6 +6,29 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "y",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "fast-keys",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "u",
             "modifiers": {
               "optional": [
@@ -84,7 +107,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen",
+              "key_code": "open_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -110,7 +133,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
+              "key_code": "close_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -136,7 +159,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen"
+              "key_code": "open_bracket"
             }
           ],
           "conditions": [
@@ -159,7 +182,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign"
+              "key_code": "close_bracket"
             }
           ],
           "conditions": [
@@ -221,6 +244,52 @@
               "value": 1
             }
           ]
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "fast-keys",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "tab"
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "d"
+              },
+              {
+                "key_code": "y"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "fast-keys",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
         },
         {
           "type": "basic",
@@ -373,7 +442,7 @@
               }
             },
             {
-              "key_code": "hyphen",
+              "key_code": "open_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -422,7 +491,7 @@
               }
             },
             {
-              "key_code": "equal_sign",
+              "key_code": "close_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -471,7 +540,7 @@
               }
             },
             {
-              "key_code": "hyphen"
+              "key_code": "open_bracket"
             }
           ],
           "from": {
@@ -517,7 +586,7 @@
               }
             },
             {
-              "key_code": "equal_sign"
+              "key_code": "close_bracket"
             }
           ],
           "from": {
@@ -1161,7 +1230,7 @@
       ]
     },
     {
-      "description": "Caps + Quote -> Hyper",
+      "description": "Caps and Hyper",
       "manipulators": [
         {
           "type": "basic",
@@ -1189,31 +1258,38 @@
           "to_if_held_down": [
             {
               "halt": true,
-              "key_code": "left_shift",
+              "key_code": "left_command",
               "modifiers": [
-                "left_command",
                 "left_option",
-                "left_control"
+                "left_control",
+                "left_shift"
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "description": "rcmd -> Hyper",
-      "manipulators": [
+        },
         {
           "type": "basic",
           "from": {
-            "key_code": "right_command"
+            "key_code": "escape"
           },
           "to_if_alone": [
             {
               "halt": true,
-              "key_code": "right_command"
+              "key_code": "escape"
             }
           ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "key_code": "vk_none"
+              }
+            ],
+            "to_if_canceled": [
+              {
+                "key_code": "escape"
+              }
+            ]
+          },
           "to_if_held_down": [
             {
               "halt": true,
@@ -1229,17 +1305,17 @@
       ]
     },
     {
-      "description": "Layer - vim-navigation-mode",
+      "description": "Layer - vim-navigation-mode (Final Cut Pro)",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "x"
+            "key_code": "delete_or_backspace"
           },
           "to": [
             {
               "set_variable": {
-                "name": "vim-navigation-mode",
+                "name": "vim-navigation-mode (Final Cut Pro)",
                 "value": 1
               }
             },
@@ -1253,7 +1329,189 @@
           "conditions": [
             {
               "type": "variable_unless",
-              "name": "vim-navigation-mode",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "variable_unless",
+              "name": "__layer",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (Final Cut Pro)",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "key_code": "j"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "k"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "l"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i"
+          },
+          "to": [
+            {
+              "key_code": "i"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o"
+          },
+          "to": [
+            {
+              "key_code": "o"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vim-navigation-mode (Final Cut Pro)",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "com\\.apple\\.FinalCut"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Layer - vim-navigation-mode (other apps)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "vim-navigation-mode (other apps)",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "__layer",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "vim-navigation-mode (other apps)",
               "value": 1
             },
             {
@@ -1270,7 +1528,7 @@
           "to_after_key_up": [
             {
               "set_variable": {
-                "name": "vim-navigation-mode",
+                "name": "vim-navigation-mode (other apps)",
                 "value": 0
               }
             },
@@ -1295,7 +1553,7 @@
           "conditions": [
             {
               "type": "variable_if",
-              "name": "vim-navigation-mode",
+              "name": "vim-navigation-mode (other apps)",
               "value": 1
             }
           ]
@@ -1313,7 +1571,7 @@
           "conditions": [
             {
               "type": "variable_if",
-              "name": "vim-navigation-mode",
+              "name": "vim-navigation-mode (other apps)",
               "value": 1
             }
           ]
@@ -1331,7 +1589,7 @@
           "conditions": [
             {
               "type": "variable_if",
-              "name": "vim-navigation-mode",
+              "name": "vim-navigation-mode (other apps)",
               "value": 1
             }
           ]
@@ -1349,7 +1607,7 @@
           "conditions": [
             {
               "type": "variable_if",
-              "name": "vim-navigation-mode",
+              "name": "vim-navigation-mode (other apps)",
               "value": 1
             }
           ]
@@ -1366,6 +1624,7 @@
           },
           "to_if_alone": [
             {
+              "halt": true,
               "key_code": "4"
             }
           ],
@@ -1396,32 +1655,6 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 300,
             "basic.to_if_held_down_threshold_milliseconds": 300
-          }
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "p"
-          },
-          "to_if_alone": [
-            {
-              "key_code": "p"
-            }
-          ],
-          "to_if_held_down": [
-            {
-              "halt": true,
-              "repeat": false,
-              "key_code": "p",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            }
-          ],
-          "parameters": {
-            "basic.to_if_held_down_threshold_milliseconds": 300,
-            "basic.to_if_alone_timeout_milliseconds": 300
           }
         }
       ]
@@ -1456,6 +1689,17 @@
                 "left_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1481,6 +1725,17 @@
                 "left_command"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1504,6 +1759,17 @@
               "modifiers": [
                 "left_option",
                 "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1531,6 +1797,17 @@
                 "left_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1556,6 +1833,17 @@
                 "left_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1586,6 +1874,17 @@
               "key_code": "left_control",
               "modifiers": [
                 "left_option"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1620,6 +1919,17 @@
                 "left_control"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1650,6 +1960,17 @@
               "key_code": "left_control",
               "modifiers": [
                 "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1684,6 +2005,17 @@
                 "left_control"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1714,6 +2046,17 @@
               "key_code": "left_control",
               "modifiers": [
                 "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1748,6 +2091,17 @@
                 "left_control"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1778,6 +2132,17 @@
               "key_code": "left_option",
               "modifiers": [
                 "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1812,6 +2177,17 @@
                 "left_option"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1842,6 +2218,17 @@
               "key_code": "left_option",
               "modifiers": [
                 "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1876,6 +2263,17 @@
                 "left_option"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1908,6 +2306,17 @@
                 "left_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -1938,6 +2347,17 @@
               "key_code": "left_shift",
               "modifiers": [
                 "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -1974,7 +2394,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2008,7 +2439,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2042,7 +2484,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2076,7 +2529,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2105,6 +2569,17 @@
                 "right_control"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2130,6 +2605,17 @@
                 "right_command"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2155,6 +2641,17 @@
                 "right_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2180,6 +2677,17 @@
                 "right_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2203,6 +2711,17 @@
               "modifiers": [
                 "right_command",
                 "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2237,6 +2756,17 @@
                 "right_option"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2267,6 +2797,17 @@
               "key_code": "right_option",
               "modifiers": [
                 "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2301,6 +2842,17 @@
                 "right_command"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2331,6 +2883,17 @@
               "key_code": "right_command",
               "modifiers": [
                 "right_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2365,6 +2928,17 @@
                 "right_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2397,6 +2971,17 @@
                 "right_control"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2427,6 +3012,17 @@
               "key_code": "right_option",
               "modifiers": [
                 "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2461,6 +3057,17 @@
                 "right_option"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2491,6 +3098,17 @@
               "key_code": "right_option",
               "modifiers": [
                 "right_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2525,6 +3143,17 @@
                 "right_option"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2557,6 +3186,17 @@
                 "right_shift"
               ]
             }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
           ]
         },
         {
@@ -2587,6 +3227,17 @@
               "key_code": "right_shift",
               "modifiers": [
                 "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
               ]
             }
           ]
@@ -2623,7 +3274,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2657,7 +3319,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2691,7 +3364,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "basic",
@@ -2725,7 +3409,18 @@
           "parameters": {
             "basic.to_if_alone_timeout_milliseconds": 150,
             "basic.to_if_held_down_threshold_milliseconds": 150
-          }
+          },
+          "conditions": [
+            {
+              "type": "device_unless",
+              "identifiers": [
+                {
+                  "vendor_id": 5824,
+                  "product_id": 10203
+                }
+              ]
+            }
+          ]
         }
       ]
     },

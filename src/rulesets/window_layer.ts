@@ -1,4 +1,4 @@
-import { FromAndToKeyCode, layer, LayerKeyParam, map, rule } from 'karabiner.ts'
+import { map, simlayer, withMapper } from 'karabiner.ts'
 import { LayerConfig } from '../config/layout_mappings'
 
 /**
@@ -13,11 +13,11 @@ export const windowLayer = ({
 }: LayerConfig) => {
   console.log(`window layer key for ${profileName}: ${layerLocation.q}`)
   return [
-    layer(layerLocation.q, 'window-mode').manipulators([
-      map(location.h).to('left_arrow', ['l⇧', 'l⌥', 'l⌘']),
-      map(location.j).to('down_arrow', ['l⇧', 'l⌥', 'l⌘']),
-      map(location.k).to('up_arrow', ['l⇧', 'l⌥', 'l⌘']),
-      map(location.l).to('right_arrow', ['l⇧', 'l⌥', 'l⌘']),
+    simlayer(layerLocation.grave_accent_and_tilde, 'window-mode').manipulators([
+      withMapper([location.left_arrow, location.h])((k, _) => map(k).to('left_arrow', ['l⇧', 'l⌥', 'l⌘'])),
+      withMapper([location.down_arrow, location.j])((k, _) => map(k).to('down_arrow', ['l⇧', 'l⌥', 'l⌘'])),
+      withMapper([location.up_arrow, location.k])((k, _) => map(k).to('down_arrow', ['l⇧', 'l⌥', 'l⌘'])),
+      withMapper([location.right_arrow, location.l])((k, _) => map(k).to('down_arrow', ['l⇧', 'l⌥', 'l⌘'])),
     ]),
   ]
 }

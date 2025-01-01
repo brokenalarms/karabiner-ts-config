@@ -10,6 +10,7 @@ import { vimNavigation } from './rulesets/vim_navigation'
 import { vsCode } from './rulesets/vs-code'
 import { windowLayer } from './rulesets/window_layer'
 import { writeToProfileWithLocalOutput } from './utils/writeToProfileWithLocalOutput'
+import { layer_emojiAndSnippet } from './rulesets/emoji'
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
@@ -27,6 +28,7 @@ profileConfigs.forEach((config) => {
       ...oneShots(layerConfig),
       ...homeRowModsCtrlOptCommandShift(layerConfig),
       ...vsCode(layerConfig),
+      layer_emojiAndSnippet(layerConfig),
       // It is not required, but recommended to put symbol alias to layers,
       // to make it easier to write '←' instead of 'left_arrow'.
       // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts

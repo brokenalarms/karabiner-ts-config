@@ -122,7 +122,7 @@ profileConfigs.forEach((config) => {
       'mouse_motion_to_scroll.speed': 100,
       // karabiner.ts only parameters
       //   for simlayer()
-      //'simlayer.threshold_milliseconds': 200
+      'simlayer.threshold_milliseconds': 200
       //   for mapDoubleTap()
       //'double_tap.delay_milliseconds': 200,
     },

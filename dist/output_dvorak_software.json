@@ -720,63 +720,17 @@
       ]
     },
     {
-      "description": "Layer - window-mode",
+      "description": "Simlayer - window-mode",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "q"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "window-mode",
-                "value": 1
-              }
-            },
-            {
-              "set_variable": {
-                "name": "__layer",
-                "value": 1
-              }
+            "key_code": "left_arrow",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
             }
-          ],
-          "conditions": [
-            {
-              "type": "variable_unless",
-              "name": "window-mode",
-              "value": 1
-            },
-            {
-              "type": "variable_unless",
-              "name": "__layer",
-              "value": 1
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "q"
-            }
-          ],
-          "to_after_key_up": [
-            {
-              "set_variable": {
-                "name": "window-mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "__layer",
-                "value": 0
-              }
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "h"
           },
           "to": [
             {
@@ -799,7 +753,40 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "j"
+            "key_code": "h",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "down_arrow",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
             {
@@ -822,7 +809,40 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "k"
+            "key_code": "j",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "up_arrow",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
             {
@@ -845,7 +865,40 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "l"
+            "key_code": "k",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_arrow",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
             {
@@ -864,6 +917,442 @@
               "value": 1
             }
           ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "window-mode",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "left_arrow"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "h"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "down_arrow"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "j"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "up_arrow"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "k"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "right_arrow"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "window-mode",
+                "value": 1
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_option",
+                "left_command"
+              ]
+            }
+          ],
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "grave_accent_and_tilde"
+              },
+              {
+                "key_code": "l"
+              }
+            ],
+            "simultaneous_options": {
+              "detect_key_down_uninterruptedly": true,
+              "key_down_order": "strict",
+              "key_up_order": "strict_inverse",
+              "key_up_when": "any",
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "window-mode",
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          }
         }
       ]
     },
@@ -3439,7 +3928,7 @@
             }
           ],
           "parameters": {
-            "basic.to_if_held_down_threshold_milliseconds": 80
+            "basic.to_if_held_down_threshold_milliseconds": 100
           },
           "to_if_alone": [
             {
@@ -3472,7 +3961,7 @@
             }
           ],
           "parameters": {
-            "basic.to_if_held_down_threshold_milliseconds": 80
+            "basic.to_if_held_down_threshold_milliseconds": 100
           },
           "to_if_alone": [
             {
@@ -3489,6 +3978,1101 @@
               "bundle_identifiers": [
                 "Code"
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "DuoLayer z x",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "z"
+              },
+              {
+                "key_code": "x"
+              }
+            ],
+            "simultaneous_options": {
+              "to_after_key_up": [
+                {
+                  "set_variable": {
+                    "name": "duo-layer-z-x",
+                    "value": 0
+                  }
+                },
+                {
+                  "set_notification_message": {
+                    "id": "duo-layer-duo-layer-z-x",
+                    "text": ""
+                  }
+                }
+              ]
+            },
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "parameters": {
+            "basic.simultaneous_threshold_milliseconds": 200
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "duo-layer-z-x",
+                "value": 1
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "duo-layer-duo-layer-z-x",
+                "text": "🐛 📅 📝 🚩 💯 😂 🔀 ✨ 👍 ♻️ 😅 🧵 💄 🔖\nB    C    D    F    H    J    M    N    P    R    S    T    U    V"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "slash"
+          },
+          "to": [
+            {
+              "shell_command": "open raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🐛\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"📅\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"📝\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🚩\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"💯\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"😂\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "m"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🔀\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"✨\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"👍\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"♻️\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"😅\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🧵\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"💄\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"🔖\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌫\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌦\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇥\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⎋\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌘\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "7"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌥\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "8"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌃\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "9"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇧\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⇪\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "comma"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"‹\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "period"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"›\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"←\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"→\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "up_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"↑\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "down_arrow"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"↓\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"␣\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⏎\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌫\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_forward"
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e '\nset prev to the clipboard\nset the clipboard to \"⌦\"\ntell application \"System Events\"\n  keystroke \"v\" using command down\n  delay 0.1\nend tell\nset the clipboard to prev'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "f20"
+            },
+            {
+              "key_code": "k"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.microsoft.VSCode$"
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "f20"
+            },
+            {
+              "key_code": "l"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.microsoft.VSCode$"
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "a"
+            },
+            {
+              "key_code": "f"
+            },
+            {
+              "key_code": "u"
+            },
+            {
+              "key_code": "n"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.jetbrains.WebStorm$"
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "key_code": "9",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "0",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "key_code": "equal_sign"
+            },
+            {
+              "key_code": "period",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "spacebar"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "key_code": "c"
+            },
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "n"
+            },
+            {
+              "key_code": "s"
+            },
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "l"
+            },
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "period"
+            },
+            {
+              "key_code": "l"
+            },
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "g"
+            },
+            {
+              "key_code": "9",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "0",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o"
+          },
+          "to": [
+            {
+              "key_code": "c"
+            },
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "n"
+            },
+            {
+              "key_code": "s"
+            },
+            {
+              "key_code": "o"
+            },
+            {
+              "key_code": "l"
+            },
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "period"
+            },
+            {
+              "key_code": "a"
+            },
+            {
+              "key_code": "s"
+            },
+            {
+              "key_code": "s"
+            },
+            {
+              "key_code": "e"
+            },
+            {
+              "key_code": "r"
+            },
+            {
+              "key_code": "t"
+            },
+            {
+              "key_code": "9",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "0",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "slash"
+          },
+          "to": [
+            {
+              "key_code": "c"
+            },
+            {
+              "key_code": "n"
+            },
+            {
+              "key_code": "9",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "0",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            },
+            {
+              "key_code": "quote",
+              "modifiers": [
+                "shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket"
+          },
+          "to": [
+            {
+              "key_code": "open_bracket"
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "key_code": "close_bracket"
+            },
+            {
+              "key_code": "spacebar"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "close_bracket"
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "key_code": "open_bracket"
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "key_code": "close_bracket"
+            },
+            {
+              "key_code": "spacebar"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash"
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "duo-layer-z-x",
+              "value": 1
             }
           ]
         }
@@ -3574,6 +5158,7 @@
     "basic.to_if_held_down_threshold_milliseconds": 150,
     "basic.to_delayed_action_delay_milliseconds": 200,
     "basic.simultaneous_threshold_milliseconds": 60,
-    "mouse_motion_to_scroll.speed": 100
+    "mouse_motion_to_scroll.speed": 100,
+    "simlayer.threshold_milliseconds": 200
   }
 }

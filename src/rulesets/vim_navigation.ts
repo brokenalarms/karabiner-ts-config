@@ -7,7 +7,7 @@ export const vimNavigation = ({
   letter,
 }: LayerConfig) => {
   return [
-    layer(layerLocation.delete_or_backspace, 'vim-navigation-mode (Final Cut Pro)').condition(ifApp(['com\\.apple\\.FinalCut'])).manipulators([
+    layer(layerLocation.grave_accent_and_tilde, 'vim-navigation-mode (Final Cut Pro)').condition(ifApp(['com\\.apple\\.FinalCut'])).manipulators([
       map(location.j).to('j'),
       map(location.k).to('k'),
       map(location.l).to('l'),
